@@ -7,320 +7,374 @@
 <meta name="description" content="Ambulancia MUDr. Janka Nová – komplexná zdravotná starostlivosť, prevencia a individuálny prístup.">
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #333;
-    line-height: 1.6;
-    background: #f9f9f9;
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#333;
+    line-height:1.6;
+    background:#f9f9f9;
+}
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+}
+header{
+    background:#0f4c75;
+    color:#fff;
+    padding:15px 0;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+header .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+header h1{
+    margin:0;
+    font-size:20px;
+}
+nav{
+    display:flex;
+    flex-wrap:wrap;
+}
+nav a{
+    color:#fff;
+    margin-left:15px;
+    text-decoration:none;
+    font-weight:bold;
+}
+nav a:hover{text-decoration:underline;}
+
+.burger{
+    display:none;
+    flex-direction:column;
+    cursor:pointer;
+}
+.burger div{
+    width:25px;
+    height:3px;
+    background:#fff;
+    margin:4px 0;
+}
+.nav-active{
+    display:flex !important;
+    flex-direction:column;
+    width:100%;
+    background:#0f4c75;
+    padding:10px 0;
 }
 
-.container {
-    width: 90%;
-    max-width: 1100px;
-    margin: auto;
+.hero{
+    background:#e8f1f5;
+    padding:60px 0;
+    text-align:center;
+}
+.hero h2{font-size:32px;color:#0f4c75;}
+.hero p{font-size:18px;max-width:700px;margin:auto;}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 30px;
+    background:linear-gradient(135deg,#1b9aaa,#14818f);
+    color:#fff;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:bold;
 }
 
-header {
-    background: #0f4c75;
-    color: #fff;
-    padding: 15px 0;
+.section{
+    padding:50px 0;
+    background:#fff;
+    margin-bottom:20px;
+    border-radius:10px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+.section.light{background:#f4f9fb;}
+.section h3{
+    color:#0f4c75;
+    margin-bottom:20px;
+    font-size:26px;
 }
 
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+.services li{
+    background:#fff;
+    padding:15px;
+    border-left:5px solid #1b9aaa;
+    border-radius:4px;
+    box-shadow:0 1px 4px rgba(0,0,0,0.05);
+}
+.services li::before{
+    content:"✔️ ";
 }
 
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+.card{
+    background:#fff;
+    border-radius:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    padding:20px;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 20px;
+table{
+    width:100%;
+    border-collapse:collapse;
 }
 
-nav {
-    display: flex;
-}
-
-nav a {
-    color: #ffffff;
-    margin-left: 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover { text-decoration: underline; }
-
-.burger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.burger div {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    margin: 4px 0;
-    transition: 0.4s;
-}
-
-.nav-active {
-    display: flex !important;
-    flex-direction: column;
-    width: 100%;
-    background: #0f4c75;
-    padding: 10px 0;
-}
-
-.hero {
-    background: #e8f1f5;
-    padding: 60px 0;
+table th {
     text-align: center;
 }
-
-.hero h2 { font-size: 32px; margin-bottom: 10px; color: #0f4c75; }
-.hero p { font-size: 18px; max-width: 700px; margin: auto; }
-
-.btn {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 12px 30px;
-    background: linear-gradient(135deg,#1b9aaa,#14818f);
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: background 0.3s;
+table td {
+    text-align: center;
+}
+table th,table td{
+    padding:12px;
+    border-bottom:1px solid #ccc;
 }
 
-.btn:hover {
-    background: linear-gradient(135deg,#14818f,#0f6f78);
+.loga-poistovni{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    align-items:center;
+}
+.loga-poistovni img{
+    height:40px;
 }
 
-.section {
-    padding: 50px 0;
-    background: #fff;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+iframe{
+    width:100%;
+    height:300px;
+    border:0;
+    border-radius:6px;
 }
 
-.section.light { background: #f4f9fb; }
-
-.section h3 { color: #0f4c75; margin-bottom: 20px; font-size: 26px; }
-
-ul { list-style: none; padding: 0; }
-ul li { margin-bottom: 10px; }
-
-.services li {
-    background: #ffffff;
-    padding: 15px;
-    border-left: 5px solid #1b9aaa;
-    border-radius: 4px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    display: flex;
-    align-items: center;
+footer{
+    background:#0f4c75;
+    color:#fff;
+    text-align:center;
+    padding:15px 0;
+    font-size:14px;
 }
-
-.services li::before {
-    content: "✔️";
-    margin-right: 10px;
-}
-
-.card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    padding: 20px;
-    margin-bottom: 15px;
-}
-
-.card h4 { margin-top: 0; color: #1b9aaa; }
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-table th, table td {
-    padding: 12px;
-    border-bottom: 1px solid #cccccc;
-    text-align: left;
-}
-
-table tr.today {
-    background: #1b9aaa;
-    color: #fff;
-    font-weight: bold;
-}
-
-iframe { width: 100%; height: 300px; border: 0; border-radius: 6px; }
-
-footer { background: #0f4c75; color: #fff; text-align: center; padding: 15px 0; font-size: 14px; }
 
 @media(max-width:768px){
-    nav { display: none; flex-direction: column; width: 100%; }
-    .burger { display: flex; }
-    nav a { margin: 10px 0; }
+    nav{display:none;width:100%;}
+    .burger{display:flex;}
+    nav a{margin:10px;}
 }
 </style>
 </head>
+
 <body>
 
 <header>
-    <div class="container">
-        <h1>MUDr. Janka Nová</h1>
-        <div class="burger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <nav id="nav">
-            <a href="#hero">Úvod</a>
-            <a href="#o-nas">O nás</a>
-            <a href="#aktuality">Aktuality</a>
-            <a href="#sluzby">Služby</a>
-            <a href="#cennik">Cenník</a>
-            <a href="#erecept">E-recept</a>
-            <a href="#vysetrenie">Objednanie</a>
-            <a href="#novypacient">Nový pacient</a>
-            <a href="#ordinacne-hodiny">Hodiny</a>
-            <a href="#kontakt">Kontakt</a>
-        </nav>
+<div class="container">
+    <h1>MUDr. Janka Nová</h1>
+    <div class="burger" onclick="toggleMenu()">
+        <div></div><div></div><div></div>
     </div>
+    <div id="statusBadge" style="
+        font-weight:bold;
+        color:#fff;
+        padding:4px 10px;
+        border-radius:6px;
+        margin-left:20px;
+        display:inline-block;
+    ">...</div>
+    <nav id="nav">
+        <a href="#hero">Úvod</a>
+        <a href="#o-nas">O nás</a>
+        <a href="#aktuality">Aktuality</a>
+        <a href="#sluzby">Služby</a>
+        <a href="#cennik">Cenník</a>
+        <a href="#erecept">E-recept</a>
+        <a href="#vysetrenie">Objednanie</a>
+        <a href="#novypacient">Nový pacient</a>
+        <a href="#ordinacne-hodiny">Ordinačné hodiny</a>
+        <a href="#kontakt">Kontakt</a>
+    </nav>
+</div>
 </header>
 
 <section id="hero" class="hero">
-    <div class="container">
-        <h2>Praktický lekár pre dospelých</h2>
-        <p>Komplexná zdravotná starostlivosť, prevencia a individuálny prístup k pacientom v Bratislave – Nové Mesto</p>
-        <a class="btn" href="#kontakt">Objednať sa</a>
-    </div>
+<div class="container">
+    <h2>Praktický lekár pre dospelých</h2>
+    <p>Komplexná zdravotná starostlivosť, prevencia a individuálny prístup k pacientom v Bratislave – Nové Mesto</p>
+    <a class="btn" href="#kontakt">Objednať sa</a>
+</div>
 </section>
 
 <section id="o-nas" class="section">
-    <div class="container">
-        <h3>O nás</h3>
-        <p><strong>MUDr. Janka Nová</strong> – 15 rokov praxe</p>
-        <p>Sestra: Mária Kováčová</p>
-        <p>Vybavenie ambulancie: moderné prístroje, komfortné priestory</p>
-        <p><strong>Prijímame pacientov s týmito poisťovňami:</strong> Všeobecná zdravotná poisťovňa, Dôvera, Union</p>
+<div class="container">
+    <h3>O nás</h3>
+    <p><strong>MUDr. Janka Nová</strong> – 15 rokov praxe</p>
+    <p>Sestra: Mária Kováčová</p>
+    <p>Vybavenie ambulancie: moderné prístroje, komfortné priestory</p>
+
+    <h4>Zmluvné zdravotné poisťovne</h4>
+    <div class="loga-poistovni">
+        <img src="vszp.png" alt="VšZP">
+        <img src="dovera.png" alt="Dôvera">
+        <img src="union.png" alt="Union">
     </div>
+</div>
 </section>
 
 <section id="aktuality" class="section light">
-    <div class="container" style="display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px;">
+<div class="container">
+    <h3>Aktuality a oznamy</h3>
+    <div class="services-grid">
         <div class="card">Letná dovolenka: 10.–20. júla</div>
         <div class="card">Sezónne očkovanie proti chrípke</div>
         <div class="card">Nové informácie pre pacientov</div>
     </div>
+</div>
 </section>
 
 <section id="sluzby" class="section">
-    <div class="container" style="display:grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap:20px;">
-        <div>
-            <h3>Poskytované služby</h3>
-            <ul class="services">
-                <li>Preventívne prehliadky</li>
-                <li>Pracovné lekárstvo</li>
-                <li>EKG vyšetrenie</li>
-            </ul>
-        </div>
-        <div>
-            <ul class="services">
-                <li>ABI vyšetrenie</li>
-                <li>EMS kreslo</li>
-                <li>Administratívne úkony a potvrdenia</li>
-            </ul>
-        </div>
+<div class="container">
+    <h3>Poskytované služby</h3>
+    <div class="services-grid">
+        <ul class="services">
+            <li>Preventívne prehliadky</li>
+            <li>Pracovné lekárstvo</li>
+            <li>EKG vyšetrenie</li>
+        </ul>
+        <ul class="services">
+            <li>ABI vyšetrenie</li>
+            <li>EMS kreslo</li>
+            <li>Administratívne úkony a potvrdenia</li>
+        </ul>
     </div>
+</div>
 </section>
 
 <section id="cennik" class="section light">
-    <div class="container" style="display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px;">
-        <div class="card"><h4>Vyšetrenie</h4><p>20€</p></div>
-        <div class="card"><h4>Očkovanie</h4><p>15€</p></div>
-        <div class="card"><h4>Preventívna prehliadka</h4><p>25€</p></div>
-        <div class="card"><h4>Kompletný cenník</h4><p><em>Rozbaliť pre viac informácií</em></p></div>
+<div class="container">
+    <h3>Cenník</h3>
+    <div class="services-grid">
+        <div class="card"><strong>Vyšetrenie</strong><br>20 €</div>
+        <div class="card"><strong>Očkovanie</strong><br>15 €</div>
+        <div class="card"><strong>Preventívna prehliadka</strong><br>25 €</div>
+        <div class="card"><em>Kompletný cenník na vyžiadanie</em></div>
     </div>
+</div>
 </section>
 
 <section id="erecept" class="section">
-    <div class="container">
-        <h3>Objednanie e-receptu</h3>
-        <a class="btn" href="#">Objednať e-recept</a>
-    </div>
+<div class="container">
+    <h3>Objednanie e-receptu</h3>
+    <a class="btn" href="#">Objednať e-recept</a>
+</div>
 </section>
 
 <section id="vysetrenie" class="section light">
-    <div class="container">
-        <h3>Objednanie na vyšetrenie</h3>
-        <a class="btn" href="#">Objednať vyšetrenie</a>
-    </div>
+<div class="container">
+    <h3>Objednanie na vyšetrenie</h3>
+    <a class="btn" href="#">Objednať vyšetrenie</a>
+</div>
 </section>
 
 <section id="novypacient" class="section">
-    <div class="container" style="display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px;">
-        <div>
-            <h3>Stať sa novým pacientom</h3>
-            <ul>
-                <li>Občiansky preukaz</li>
-                <li>Preukaz poistenca</li>
-                <li><a href="#">Stiahnuť formulár PDF</a></li>
-            </ul>
-        </div>
-        <div>
-            <p>Pripravte si tieto dokumenty pred prvou návštevou. Vďaka tomu bude registrácia rýchla a jednoduchá.</p>
-        </div>
-    </div>
+<div class="container">
+    <h3>Stať sa novým pacientom</h3>
+    <ul>
+        <li>Občiansky preukaz</li>
+        <li>Preukaz poistenca</li>
+        <li>📄 <a href="#">Stiahnuť registračný formulár (PDF)</a></li>
+    </ul>
+</div>
 </section>
 
 <section id="ordinacne-hodiny" class="section light">
-    <div class="container">
-        <h3>Ordinačné hodiny</h3>
-        <table>
-            <tr><th>Deň</th><th>Čas</th></tr>
-            <tr class="today"><td>Pondelok</td><td>7:30 – 14:00</td></tr>
-            <tr><td>Utorok</td><td>12:00 – 18:00</td></tr>
-            <tr><td>Streda</td><td>7:30 – 14:00</td></tr>
-            <tr><td>Štvrtok</td><td>7:30 – 14:00</td></tr>
-            <tr><td>Piatok</td><td>7:30 – 12:00</td></tr>
-        </table>
-        <a class="btn" href="#kontakt">Objednať sa</a>
-    </div>
+<div class="container">
+    <h3>Ordinačné hodiny</h3>
+    <table>
+        <tr><th>Deň</th><th>Čas</th></tr>
+        <tr><td>Pondelok</td><td>7:30 – 14:00</td></tr>
+        <tr><td>Utorok</td><td>12:00 – 18:00</td></tr>
+        <tr><td>Streda</td><td>7:30 – 14:00</td></tr>
+        <tr><td>Štvrtok</td><td>7:30 – 14:00</td></tr>
+        <tr><td>Piatok</td><td>7:30 – 12:00</td></tr>
+    </table>
+</div>
 </section>
 
 <section id="kontakt" class="section">
-    <div class="container">
-        <h3>Kontakt</h3>
-        <p>📍 Bratislava – Nové Mesto<br>📞 Tel.: +421 XXX XXX XXX<br>✉️ Email: ambulancia@domena.sk</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." allowfullscreen="" loading="lazy"></iframe>
-        <a class="btn" href="tel:+421XXX">Zavolať</a>
-    </div>
+<div class="container">
+    <h3>Kontakt</h3>
+    <p>📍 Bratislava – Nové Mesto<br>
+       📞 +421 XXX XXX XXX<br>
+       ✉️ ambulancia@domena.sk</p>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!"></iframe>
+    <a class="btn" href="tel:+421XXX">Zavolať</a>
+</div>
 </section>
 
 <footer>
-    <p>© 2026 MUDr. Janka Nová – praktický lekár pre dospelých</p>
+<p>© 2026 MUDr. Janka Nová – praktický lekár pre dospelých</p>
 </footer>
 
 <script>
-function toggleMenu() {
-    var nav = document.getElementById("nav");
-    nav.classList.toggle("nav-active");
+// Burger menu toggle
+function toggleMenu(){
+    document.getElementById("nav").classList.toggle("nav-active");
 }
-</script>
+document.querySelectorAll("nav a").forEach(link=>{
+    link.addEventListener("click",()=>{
+        document.getElementById("nav").classList.remove("nav-active");
+    });
+});
 
+// Ordinacne hodiny highlight today
+const dni = ["Nedeľa","Pondelok","Utorok","Streda","Štvrtok","Piatok","Sobota"];
+const today = dni[new Date().getDay()];
+document.querySelectorAll("#ordinacne-hodiny table tr").forEach(row => {
+    if(row.innerText.includes(today)){row.classList.add("today");}
+});
+
+// STATUS BADGE – otvorené / zatvorené
+const ordHod = {
+    "Pondelok":"7:30 – 14:00",
+    "Utorok":"12:00 – 18:00",
+    "Streda":"7:30 – 14:00",
+    "Štvrtok":"7:30 – 14:00",
+    "Piatok":"7:30 – 12:00"
+};
+
+function updateBadge(){
+    const now = new Date();
+    const hodiny = now.getHours() + now.getMinutes()/60;
+    const otvorene = ordHod[today] ? ordHod[today].split("–").map(t=>t.trim()) : null;
+    const badge = document.getElementById("statusBadge");
+
+    if(otvorene){
+        const start = parseInt(otvorene[0].split(":")[0]) + parseInt(otvorene[0].split(":")[1])/60;
+        const end = parseInt(otvorene[1].split(":")[0]) + parseInt(otvorene[1].split(":")[1])/60;
+        if(hodiny >= start && hodiny <= end){
+            badge.innerText = "🟢 Otvorené teraz";
+            badge.style.background = "#1b9aaa";
+        } else {
+            badge.innerText = "🔴 Zatvorené";
+            badge.style.background = "#d9534f";
+        }
+    } else {
+        badge.innerText = "🔴 Zatvorené";
+        badge.style.background = "#d9534f";
+    }
+}
+updateBadge();
+setInterval(updateBadge,60000);
+
+</script>
 </body>
 </html>
