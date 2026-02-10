@@ -37,6 +37,15 @@ header h1{
     margin:0;
     font-size:20px;
 }
+.status-badge{
+    display:inline-block;
+    padding:3px 10px;
+    border-radius:4px;
+    margin-left:15px;
+    color:#fff;
+    font-weight:bold;
+    font-size:14px;
+}
 nav{
     display:flex;
     flex-wrap:wrap;
@@ -85,7 +94,9 @@ nav a:hover{text-decoration:underline;}
     text-decoration:none;
     border-radius:6px;
     font-weight:bold;
+    transition:0.3s;
 }
+.btn:hover{background:linear-gradient(135deg,#14818f,#0f6f78);}
 
 .section{
     padding:50px 0;
@@ -93,11 +104,11 @@ nav a:hover{text-decoration:underline;}
     margin-bottom:20px;
     border-radius:10px;
     box-shadow:0 2px 6px rgba(0,0,0,0.05);
+    opacity:0;
+    transform:translateY(20px);
+    transition:0.8s ease-out;
 }
-
-section[id] {
-    scroll-margin-top: 80px; /* uprav podľa výšky headeru */
-}
+.section.visible{opacity:1; transform:translateY(0);}
 .section.light{background:#f4f9fb;}
 .section h3{
     color:#0f4c75;
@@ -116,10 +127,14 @@ section[id] {
     border-left:5px solid #1b9aaa;
     border-radius:4px;
     box-shadow:0 1px 4px rgba(0,0,0,0.05);
+    display:flex;
+    align-items:center;
+    opacity:0;
+    transform:translateY(20px);
+    transition:0.8s ease-out;
 }
-.services li::before{
-    content:"✔️ ";
-}
+.services li::before{content:"✔️ ";}
+.services li.visible{opacity:1; transform:translateY(0);}
 
 .card{
     background:#fff;
@@ -132,17 +147,10 @@ table{
     width:100%;
     border-collapse:collapse;
 }
-
-table th {
-    text-align: center;
-}
-table td {
-    text-align: center;
-}
-table th,table td{
-    padding:12px;
-    border-bottom:1px solid #ccc;
-}
+table th{text-align:center;}
+table td{text-align:center;}
+table th,table td{padding:12px; border-bottom:1px solid #ccc;}
+table tr.today{background:#1b9aaa; color:#fff; font-weight:bold;}
 
 .loga-poistovni{
     display:flex;
@@ -150,16 +158,9 @@ table th,table td{
     flex-wrap:wrap;
     align-items:center;
 }
-.loga-poistovni img{
-    height:40px;
-}
+.loga-poistovni img{height:40px;}
 
-iframe{
-    width:100%;
-    height:300px;
-    border:0;
-    border-radius:6px;
-}
+iframe{width:100%; height:300px; border:0; border-radius:6px;}
 
 footer{
     background:#0f4c75;
@@ -182,18 +183,7 @@ footer{
 <header>
 <div class="container">
     <h1>MUDr. Janka Nová</h1>
-    <div class="burger" onclick="toggleMenu()">
-        <div></div><div></div><div></div>
-    </div>
-    <div id="statusBadge" style="
-        font-weight:bold;
-        color:#fff;
-        padding:4px 10px;
-        border-radius:6px;
-        margin-left:20px;
-        display:inline-block;
-    ">...</div>
-    <nav id="nav">
+    <nav>
         <a href="#hero">Úvod</a>
         <a href="#o-nas">O nás</a>
         <a href="#aktuality">Aktuality</a>
@@ -204,11 +194,13 @@ footer{
         <a href="#novypacient">Nový pacient</a>
         <a href="#ordinacne-hodiny">Ordinačné hodiny</a>
         <a href="#kontakt">Kontakt</a>
+        <span id="statusBadge" class="status-badge"></span>
     </nav>
+    <div class="burger" onclick="toggleMenu()"><div></div><div></div><div></div></div>
 </div>
 </header>
 
-<section id="hero" class="hero">
+<section id="hero" class="hero section">
 <div class="container">
     <h2>Praktický lekár pre dospelých</h2>
     <p>Komplexná zdravotná starostlivosť, prevencia a individuálny prístup k pacientom v Bratislave – Nové Mesto</p>
@@ -329,7 +321,6 @@ footer{
 </footer>
 
 <script>
-// Burger menu toggle
 function toggleMenu(){
     document.getElementById("nav").classList.toggle("nav-active");
 }
@@ -339,11 +330,13 @@ document.querySelectorAll("nav a").forEach(link=>{
     });
 });
 
-// Ordinacne hodiny highlight today
+// ORDINAČNÉ HODINY – zvýrazni aktuálny deň
 const dni = ["Nedeľa","Pondelok","Utorok","Streda","Štvrtok","Piatok","Sobota"];
 const today = dni[new Date().getDay()];
-document.querySelectorAll("#ordinacne-hodiny table tr").forEach(row => {
-    if(row.innerText.includes(today)){row.classList.add("today");}
+document.querySelectorAll("#ordinacne-hodiny table tr").forEach(row=>{
+    if(row.innerText.includes(today)){
+        row.classList.add("today");
+    }
 });
 
 // STATUS BADGE – otvorené / zatvorené
@@ -354,31 +347,36 @@ const ordHod = {
     "Štvrtok":"7:30 – 14:00",
     "Piatok":"7:30 – 12:00"
 };
-
-function updateBadge(){
-    const now = new Date();
-    const hodiny = now.getHours() + now.getMinutes()/60;
-    const otvorene = ordHod[today] ? ordHod[today].split("–").map(t=>t.trim()) : null;
-    const badge = document.getElementById("statusBadge");
-
-    if(otvorene){
-        const start = parseInt(otvorene[0].split(":")[0]) + parseInt(otvorene[0].split(":")[1])/60;
-        const end = parseInt(otvorene[1].split(":")[0]) + parseInt(otvorene[1].split(":")[1])/60;
-        if(hodiny >= start && hodiny <= end){
-            badge.innerText = "🟢 Otvorené teraz";
-            badge.style.background = "#1b9aaa";
-        } else {
-            badge.innerText = "🔴 Zatvorené";
-            badge.style.background = "#d9534f";
-        }
+const now = new Date();
+const hodiny = now.getHours() + now.getMinutes()/60;
+const badge = document.getElementById("statusBadge");
+const otvorene = ordHod[today] ? ordHod[today].split("–").map(t=>t.trim()) : null;
+if(otvorene){
+    const start = parseInt(otvorene[0].split(":")[0]) + parseInt(otvorene[0].split(":")[1])/60;
+    const end = parseInt(otvorene[1].split(":")[0]) + parseInt(otvorene[1].split(":")[1])/60;
+    if(hodiny >= start && hodiny <= end){
+        badge.innerText="🟢 Otvorené teraz";
+        badge.style.background="#1b9aaa";
     } else {
-        badge.innerText = "🔴 Zatvorené";
-        badge.style.background = "#d9534f";
+        badge.innerText="🔴 Zatvorené";
+        badge.style.background="#d9534f";
     }
+} else {
+    badge.innerText="🔴 Zatvorené";
+    badge.style.background="#d9534f";
 }
-updateBadge();
-setInterval(updateBadge,60000);
 
+// FADE-IN EFFECT
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+        }
+    });
+},{threshold:0.1});
+
+document.querySelectorAll(".section, .hero, .services li").forEach(el=>observer.observe(el));
 </script>
+
 </body>
 </html>
