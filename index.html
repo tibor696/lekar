@@ -117,6 +117,11 @@ nav a:hover{text-decoration:underline;}
     transform: translateY(20px);
     transition: 0.8s ease-out;
 }
+
+/* Zabránime prekrytiu názvu sekcie sticky headerom */
+section {
+    scroll-margin-top: 80px; /* výška headeru + pár px */
+}
 .section.visible{opacity:1; transform:translateY(0);}
 .section.light{background:#f4f9fb;}
 .section h3{
